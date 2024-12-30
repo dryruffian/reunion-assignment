@@ -12,7 +12,7 @@ const NavItems = ({ children, className = '', onClick }) => (
     const router = useRouter()
     return (
       <nav>
-        <div className="px-1 py-3 flex justify-between border-[#444c44] items-center gap-2 border-b mx-1">
+        <div className="px-1 py-3 flex justify-center border-[#444c44] items-center gap-2 border-b mx-1">
             <NavItems onClick={() => router.push('/dashboard')}>
                 dashboard
             </NavItems>

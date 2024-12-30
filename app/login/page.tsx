@@ -44,6 +44,10 @@ export default function Login() {
         localStorage.setItem('user', JSON.stringify(data.data.user));
       }
 
+      if (data.accessToken) {
+        localStorage.setItem('accessToken', data.accessToken.trim());
+      }
+
       // Redirect to dashboard
       router.push('/dashboard');
     } catch (err) {

@@ -20,12 +20,18 @@ const Dashboard: React.FC = () => {
 
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter()
+  useEffect(() => {
+    // Check authentication first
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        router.push('/login');
+        return;
+      }
+    }
+  }, [isAuthenticated, isLoading, router]);
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      router.push('/');
-      return;
-    }
+  
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('accessToken');

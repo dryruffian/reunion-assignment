@@ -23,6 +23,8 @@ import { Badge } from "@/components/ui/badge";
 import { Trash2, Edit, Check, X, ArrowUpDown } from 'lucide-react';
 import AddTaskModal from '@/components/AddTaskModal';
 import EditTaskModal from '@/components/EditTaskModal';
+import Navbar from '@/components/Navbar';
+
 
 interface Todo {
   _id: string;
@@ -74,7 +76,7 @@ function Tasks() {
       const token = localStorage.getItem('accessToken');
       const response = await fetch('http://localhost:5000/api/todos', {
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token?.trim()}`
         }
       });
       
@@ -212,6 +214,8 @@ function Tasks() {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
         <header className="flex justify-between items-center mb-8">
@@ -405,6 +409,7 @@ function Tasks() {
         />
       )}
     </div>
+    </>
   );
 }
 
