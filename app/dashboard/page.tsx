@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
         .map(todo => {
           const start = new Date(todo.startDate).getTime();
           const end = new Date(todo.completedAt).getTime();
-          return (end - start) / (1000 * 60 * 60); // Time in hours
+          return (end - start) / (1000 * 60 * 60);
         });
     
       const avgCompletionTime =
@@ -72,13 +72,13 @@ const Dashboard: React.FC = () => {
         .filter(todo => !todo.isCompleted)
         .reduce(
           (acc, todo) => {
-            const priority = todo.priority.toLowerCase(); // Ensure case-insensitive comparison
+            const priority = todo.priority.toLowerCase();
             const start = new Date(todo.startDate).getTime();
             const now = Date.now();
             const end = new Date(todo.endDate).getTime();
     
-            const lapsedTime = (now - start) / (1000 * 60 * 60); // Time in hours
-            const timeToFinish = (end - now) / (1000 * 60 * 60); // Time in hours
+            const lapsedTime = (now - start) / (1000 * 60 * 60); 
+            const timeToFinish = (end - now) / (1000 * 60 * 60); 
     
             acc.totalPending += 1;
             acc.totalTimeLapsed += lapsedTime > 0 ? lapsedTime : 0;
