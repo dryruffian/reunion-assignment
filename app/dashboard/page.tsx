@@ -3,6 +3,37 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/hooks';
 import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
+interface PriorityData {
+  priority: string;
+  count: number;
+  timeLapsed: number;
+  timeToFinish: number;
+}
+
+interface PendingDetails {
+  totalPending: number;
+  totalTimeLapsed: number;
+  totalTimeToFinish: number;
+  priorities: PriorityData[];
+}
+
+interface DashboardSummary {
+  totalTasks: number;
+  completedTasks: number;
+  pendingTasks: number;
+  avgCompletionTime: number;
+  pendingDetails: PendingDetails;
+}
+
+interface Todo {
+  _id: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  priority: string;
+  isCompleted: boolean;
+  completedAt?: string;
+}
 
 const Dashboard: React.FC = () => {
   const [summary, setSummary] = useState({
