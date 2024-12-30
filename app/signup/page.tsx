@@ -17,7 +17,7 @@ export default function Signup() {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   if(isAuthenticated){
     router.push('/dashboard')
